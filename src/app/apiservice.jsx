@@ -31,4 +31,8 @@ class ApiService {
     }
 }
 
+<<<<<<< HEAD
 export default ApiService
+=======
+export default ApiService
+>>>>>>> c1e838a609f5fbb907bec2170f5af285654c2aa9
