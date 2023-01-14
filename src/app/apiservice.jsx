@@ -1,13 +1,20 @@
-import axios from "axios";
+import axios from "axios"
 
 const httpClient = axios.create({
-    baseURL: 'https://minhasf-api.herokuapp.com/'
+    baseURL: 'http://localhost:8080',
+    withCredentials: true
 })
 
 class ApiService {
 
     constructor(apiurl) {
         this.apiurl = apiurl
+    }
+
+    static registrarToken(token) {
+        if(token) {
+            httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        }
     }
 
     post(url, objeto) {
@@ -30,9 +37,4 @@ class ApiService {
         return httpClient.get(requestUrl)
     }
 }
-
-<<<<<<< HEAD
 export default ApiService
-=======
-export default ApiService
->>>>>>> c1e838a609f5fbb907bec2170f5af285654c2aa9

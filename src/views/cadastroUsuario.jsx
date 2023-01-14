@@ -4,7 +4,8 @@ import FormGroup from "../components/form-group"
 import { withRouter } from "react-router-dom"
 import UsuarioService from "../app/service/usuarioService"
 import * as messages from "../components/toastr"
-import ErroValidacao from "../app/exception/ErroValidacao"
+import AuthService from "../app/service/authService"
+
 class CadastroUsuario extends Component {
 
     constructor() {
@@ -43,7 +44,11 @@ class CadastroUsuario extends Component {
     }
 
     cancelar = () => {
-        this.props.history.push('/login')
+        if(!AuthService.isUsuarioAutenticado) {
+            this.props.history.push('/login')
+        }else {
+            this.props.history.push('/home')
+        }
     }
 
     render() {
